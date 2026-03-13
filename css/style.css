@@ -888,11 +888,12 @@ li {
     color: #fff;
     background: #8c5a3c;
     border-radius: 999px;
-    transition: opacity 0.3s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .cta-button:hover {
-    opacity: .75;
+    opacity: .85;
+    transform: translateY(-2px);
 }
 
 @media (max-width: 767px) {
