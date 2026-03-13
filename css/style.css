@@ -1,0 +1,955 @@
+@charset "UTF-8";
+
+html {
+    font-size: 62.5%;
+}
+
+@media screen and (max-width: 767px) {
+    html {
+        font-size: calc(10 / 375 * 100vw);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    html {
+        font-size: 1vw;
+    }
+}
+
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    color: #000;
+}
+
+/* アンカーリンクのオフセット */
+#about,
+#access,
+#faq {
+    scroll-margin-top: 8rem;
+}
+
+@media (max-width: 767px) {
+    #about,
+    #access,
+    #faq {
+        scroll-margin-top: 6rem;
+    }
+}
+
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+li {
+    list-style: none;
+}
+
+@media (min-width: 768px) {
+    .no-pc {
+        display: none;
+    }
+}
+
+/* ヘッダー
+------------------------------------------ */
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: 8rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+.header-logo img {
+    display: block;
+    max-width: 18.8rem;
+    vertical-align: baseline;
+}
+
+.header-inner {
+    max-width: 120rem;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* メニュー */
+.pc-nav {
+    display: flex;
+    align-items: center;
+}
+
+.pc-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 3.2rem;
+}
+
+.pc-nav-button {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: #4a4a4a;
+    line-height: 1.25;
+}
+
+.pc-nav-button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 1px;
+    background: #4a4a4a;
+    transition: width 0.3s ease;
+}
+
+.pc-nav-button:hover::after {
+    width: 100%;
+}
+
+
+@media (max-width: 767px) {
+    .header {
+        height: 5.6rem;
+        opacity: 1;
+    }
+
+    .header-logo img {
+        max-width: 17rem;
+    }
+
+    .pc-nav {
+        display: none;
+    }
+
+
+    .header-inner {
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+}
+
+/* ハンバーガー
+------------------------------------------ */
+@media (max-width: 767px) {
+    .hamburger-button {
+        width: 29px;
+        height: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        cursor: pointer;
+    }
+
+    .hamburger-button span {
+        display: block;
+        height: 1px;
+        opacity: 0.9;
+        background: #4a4a4a;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        transform-origin: center;
+        width: 100%;
+    }
+
+
+    /* ハンバーガーメニュー */
+    .hamburger-nav {
+        display: none;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        position: absolute;
+        top: 5.6rem;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+    }
+
+    .hamburger-nav-list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.5rem;
+        padding: 2.4rem 1.5rem 2.8rem;
+    }
+
+    .hamburger-nav-list a {
+        display: inline-block;
+        padding: 0.6rem 0;
+        font-family: "Noto Sans JP", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 400;
+        letter-spacing: 0.12em;
+        color: #4a4a4a;
+        line-height: 1.4;
+    }
+
+    /* ハンバーガーメニュー　アクティブ状態 */
+    .hamburger-nav-active {
+        display: block;
+    }
+
+    .hamburger-button.active span:nth-child(1) {
+        width: 100%;
+        transform: rotate(45deg) translateY(15.5px);
+    }
+
+    .hamburger-button.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-button.active span:nth-child(3) {
+        width: 100%;
+        transform: rotate(-45deg) translateY(-15.5px);
+    }
+}
+
+/* カバー
+------------------------------------------ */
+.cover {
+    margin-top: 0;
+    position: relative;
+}
+
+.cover-image img {
+    display: block;
+    width: 100%;
+    height: 74vh;
+    object-fit: cover;
+    object-position: 60% center;
+}
+
+.cover-content {
+    position: absolute;
+    left: 5%;
+    bottom: 20vh;
+    max-width: 37rem;
+    width: 100%;
+    text-align: center;
+}
+
+.cover-title {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 300;
+    font-size: 3.1rem;
+    line-height: 1.6;
+    letter-spacing: .08em;
+}
+
+.cover-cta {
+    display: inline-flex;
+    margin-top: 2rem;
+    padding: 1rem 2.2rem;
+    font-size: 1.6rem;
+    border-radius: 999px;
+    background: #8c5a3c;
+    color: #fff;
+}
+
+.cover-cta:hover {
+    opacity: .8;
+}
+
+@media (max-width: 767px) {
+    .cover-image img {
+        width: 100%;
+        aspect-ratio: 375 / 430;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .cover-content {
+        position: static;
+        width: auto;
+        padding: 2.4rem 1.5rem 0;
+        text-align: center;
+    }
+
+    .cover-title {
+        font-size: 2.8rem;
+        line-height: calc(49 / 28);
+        text-align: center;
+    }
+
+    .cover-cta {
+        margin: 2rem auto 0;
+        display: inline-flex;
+        width: fit-content;
+    }
+}
+
+
+/* サロン紹介リード
+------------------------------------------ */
+.about {
+    padding: 7rem 11rem 3rem;
+}
+
+.about-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-lead {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 300;
+    font-size: 2rem;
+    line-height: 2.1;
+    letter-spacing: .04em;
+    color: #4a4a4a;
+}
+
+@media (max-width: 767px) {
+    .about {
+        padding: 4rem 1.5rem 2rem;
+    }
+
+    .about-lead {
+        font-size: 1.7rem;
+        line-height: 2;
+    }
+}
+
+
+/* 特徴・強み
+------------------------------------------ */
+.features {
+    padding: 4rem 11rem 5rem;
+}
+
+.features-inner {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+.features-heading {
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: .4em;
+    color: #8c5a3c;
+    margin-bottom: .3rem;
+}
+
+.features-subtitle {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #4a4a4a;
+    margin-bottom: 2.4rem;
+}
+
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5rem;
+}
+
+.features-item {
+    text-align: center;
+    padding: 2.4rem 0;
+}
+
+.features-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: .14em;
+    color: #8c5a3c;
+
+    margin-bottom: 1.6rem;
+}
+
+.features-label::before,
+.features-label::after {
+    content: "";
+    width: 4rem;
+    height: 1px;
+    background: rgba(74, 74, 74, 0.3);
+}
+
+.features-label::before {
+    margin-right: 1.2rem;
+}
+
+.features-label::after {
+    margin-left: 1.2rem;
+}
+
+.features-title {
+    font-family: "Noto Serif JP", serif;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: .04em;
+    color: #4a4a4a;
+    margin-bottom: 1.4rem;
+}
+
+.features-text {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #4a4a4a;
+    margin-top: auto;
+}
+
+/* 料金
+------------------------------------------ */
+.price {
+    padding: 4rem 11rem 6rem;
+}
+
+.price-inner {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+.price-heading {
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: .4em;
+    color: #8c5a3c;
+    margin-bottom: .3rem;
+}
+
+.price-subtitle {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #4a4a4a;
+    margin-bottom: 2.4rem;
+}
+
+.price-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+}
+
+.price-item {
+    text-align: center;
+    padding: 3rem 2rem;
+    border: 1px solid rgba(74, 74, 74, 0.12);
+    border-radius: 1.6rem;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.price-plan {
+    font-family: "Noto Serif JP", serif;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: .04em;
+    color: #4a4a4a;
+    margin-bottom: 1.6rem;
+}
+
+.price-value {
+    font-family: "Noto Serif JP", serif;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #8c5a3c;
+    margin-bottom: 1.6rem;
+}
+
+.price-text {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #4a4a4a;
+}
+
+
+@media (max-width: 767px) {
+    .features {
+        padding: 4rem 1.5rem 5rem;
+    }
+
+    .features-inner {
+        padding: 0;
+    }
+
+    .features-list {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .price {
+        padding: 4rem 1.5rem 5rem;
+    }
+
+    .price-inner {
+        padding: 0;
+    }
+
+    .price-list {
+        grid-template-columns: 1fr;
+        gap: 2.4rem;
+    }
+}
+
+/* アクセス
+------------------------------------------ */
+.access {
+    padding: 4rem 11rem 6rem;
+}
+
+.access-inner {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+.access-heading {
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: .4em;
+    color: #8c5a3c;
+    margin-bottom: .3rem;
+}
+
+.access-subtitle {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #4a4a4a;
+    margin-bottom: 2.4rem;
+}
+
+.access-map {
+    margin-bottom: 3rem;
+}
+
+.access-map iframe {
+    display: block;
+    width: 100%;
+    height: 42rem;
+    border: 0;
+    border-radius: 1.6rem;
+}
+
+.access-info {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.access-address {
+    font-family: "Noto Serif JP", serif;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: .04em;
+    color: #4a4a4a;
+    margin-bottom: 1.2rem;
+}
+
+.access-caption {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.9;
+    color: #4a4a4a;
+}
+
+.access-hours {
+    max-width: 53rem;
+    margin: 0 auto;
+    padding: 2.6rem 4rem;
+    border: 1px solid rgba(74, 74, 74, 0.12);
+    border-radius: 1.6rem;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.hours-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.hours-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: .4rem;
+}
+
+.hours-day {
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: .1em;
+    color: #8c5a3c;
+}
+
+.hours-time {
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+
+@media (max-width: 767px) {
+    .access {
+        padding: 4rem 1.5rem 5rem;
+    }
+
+    .access-inner {
+        padding: 0;
+    }
+
+    .access-heading {
+        font-size: 1.3rem;
+        letter-spacing: .35em;
+        margin-bottom: .4rem;
+    }
+
+    .access-subtitle {
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+    }
+
+    .access-map {
+        margin-bottom: 2.4rem;
+    }
+
+    .access-map iframe {
+        height: 28rem;
+        border-radius: 1.2rem;
+    }
+
+    .access-info {
+        margin-bottom: 2.8rem;
+    }
+
+    .access-address {
+        font-size: 1.7rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+    }
+
+    .access-caption {
+        font-size: 1.3rem;
+        line-height: 1.9;
+    }
+
+    .access-hours {
+        max-width: 100%;
+        padding: 2rem 1.6rem;
+    }
+
+    .hours-list {
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    .hours-item {
+        align-items: center;
+        text-align: center;
+        gap: .2rem;
+    }
+
+    .hours-day,
+    .hours-time {
+        font-size: 1.4rem;
+        line-height: 1.8;
+    }
+}
+
+
+/* FAQ
+------------------------------------------ */
+.faq-area {
+    padding: 4rem 11rem 6rem;
+}
+
+.faq-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+}
+
+.faq-heading {
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: .4em;
+    color: #8c5a3c;
+    margin-bottom: .3rem;
+}
+
+.faq-subtitle {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #4a4a4a;
+    margin-bottom: 4rem;
+}
+
+/* アコーディオン */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.faq-item {
+    border: 1px solid rgba(74, 74, 74, 0.12);
+    border-radius: 1.6rem;
+    background: rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+}
+
+.faq-question-title {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    padding: 2rem 2.4rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.faq-question-title::after {
+    content: "+";
+    position: absolute;
+    right: 2.4rem;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #8c5a3c;
+    transition: transform 0.3s ease;
+}
+
+.faq-question-title.open::after {
+    transform: rotate(45deg);
+}
+
+.faq-question {
+    font-family: "Noto Serif JP", serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #8c5a3c;
+    flex-shrink: 0;
+}
+
+.faq-question-text {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #4a4a4a;
+    padding-right: 3rem;
+}
+
+/* 回答 */
+.faq-answer-box {
+    display: none;
+    padding: 1.8rem 0 2rem;
+    border-top: 1px dashed rgba(74, 74, 74, 0.2);
+    margin: 0 2.4rem;
+}
+
+.faq-answer-title {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+}
+
+.faq-answer {
+    font-family: "Noto Serif JP", serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #4a4a4a;
+    flex-shrink: 0;
+}
+
+.faq-answer-text {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.9;
+    color: #4a4a4a;
+}
+
+@media (max-width: 767px) {
+    .faq-area {
+        padding: 4rem 1.5rem 5rem;
+    }
+
+    .faq-heading {
+        font-size: 1.3rem;
+        letter-spacing: .35em;
+    }
+
+    .faq-subtitle {
+        font-size: 1.4rem;
+        margin-bottom: 3rem;
+    }
+
+    .faq-question-title {
+        gap: .7rem;
+        padding: 1.6rem 1.6rem;
+    }
+
+    .faq-question-text {
+        font-size: 1.4rem;
+        padding-right: 3.4rem;
+    }
+
+    .faq-question-title::after {
+        right: 1.7rem;
+        top: 1.5rem;
+    }
+
+    .faq-answer-box {
+        margin: 0 1.6rem;
+    }
+
+    .faq-answer-text {
+        font-size: 1.4rem;
+    }
+}
+
+/* CTA
+------------------------------------------ */
+.cta {
+    background: rgba(140, 90, 60, 0.06);
+    padding: 6rem 11rem 8rem;
+}
+
+.cta-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cta-text {
+    font-family: "Noto Serif JP", serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: .2em;
+    color: #8c5a3c;
+    margin-bottom: 1.6rem;
+}
+
+.cta-lead {
+    font-family: "Noto Serif JP", serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: .06em;
+    color: #4a4a4a;
+    margin-bottom: 3rem;
+}
+
+.cta-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.4rem 4rem;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: .1em;
+    color: #fff;
+    background: #8c5a3c;
+    border-radius: 999px;
+    transition: opacity 0.3s ease;
+}
+
+.cta-button:hover {
+    opacity: .75;
+}
+
+@media (max-width: 767px) {
+    .cta {
+        padding: 6rem 1.5rem;
+    }
+
+    .cta-lead {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .cta-button {
+        padding: 1.2rem 3.2rem;
+        font-size: 1.5rem;
+    }
+}
+
+/* フッター
+------------------------------------------ */
+.footer {
+    padding: 4rem 0;
+    background: #4a4a4a;
+}
+
+.footer-inner {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer-logo {
+    display: block;
+    width: 14rem;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+.copyright {
+    display: block;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: .08em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 767px) {
+    .footer {
+        padding: 3.2rem 0;
+    }
+
+    .footer-logo {
+        width: 13rem;
+    }
+}
